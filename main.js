@@ -14,7 +14,7 @@
 function autoMachine(money, numberOfproducts, number) {
   switch (numberOfproducts) {
     case 1:
-      console.log("Bạn đã chọn mua Pepse");
+      console.log("Bạn đã chọn mua Pepsi");
       return money - 2 * number;
     case 2:
       console.log("Bạn đã chọn mua Cocacola");
@@ -42,6 +42,8 @@ do {
   }
 } while (isNaN(money) || money <= 0);
 console.log("Số tiền bạn nạp vào: " + money + "$");
+console.log("---------------------------");
+
 let buyMore = true;
 while (money > 0 && buyMore) {
   let numberOfproducts = Number(
@@ -66,11 +68,16 @@ while (money > 0 && buyMore) {
     {
       money = autoMachine(money, numberOfproducts, number);
       console.log("Số lượng: " + number);
-      if (money >= 0) {
+      if (money > 0) {
         console.log("Số tiền còn lại của bạn: " + money + "$");
         buyMore = confirm("Bạn có muốn mua thêm sản phẩm không?");
+      } else if (money === 0) {
+        console.log("Số tiền còn lại của bạn: " + money + "$");
+        console.log("Vui lòng nạp tiền để trải nghiệm dịch vụ!!");
+        buyMore = false;
       } else {
-        console.log("Không đủ tiền mua!!");
+        console.log("Bạn không đủ tiền mua sản phẩm này!!");
+        console.log("Vui lòng nạp tiền để trải nghiệm dịch vụ!!");
         buyMore = false;
       }
       console.log("---------------------------");
